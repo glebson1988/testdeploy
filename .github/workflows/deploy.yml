@@ -5,8 +5,8 @@ env:
 name: Deploy production
 on:
   pull_request:
-    types: [ closed ]
-  workflow_dispatch:
+    types: [closed]
+  [workflow_dispatch]
 
 jobs:
   merge_job:
