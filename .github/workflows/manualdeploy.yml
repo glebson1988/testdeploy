@@ -2,11 +2,8 @@ env:
   PROJECT_NAMESPACE: pandere/melobeem
   ECR_PATH: ${{ secrets.AWS_REGISTRY_ID }}.dkr.ecr.us-west-2.amazonaws.com
 
-name: Deploy production
-on:
-  pull_request:
-    types: [ closed ]
-  workflow_dispatch:
+name: Manual deploy production
+on: [workflow_dispatch]
 
 jobs:
   merge_job:
