@@ -4,13 +4,12 @@ env:
 
 name: Deploy production
 on:
-  pull_request_target:
-    types:
-      - closed
+  pull_request:
+    types: [ closed ]
 
 jobs:
-  on_merged:
-    if: github.event.pull_request.merged_by != ''
+  merge_job:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Clone Repositroy
