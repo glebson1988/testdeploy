@@ -5,14 +5,14 @@ describe 'Webhooks API', type: :request do
   let(:stripe_helper) { StripeMock.create_test_helper }
   let(:params) do
     {
-      "data": {
-        "object": {
-          "id": 'pi_00000000000000',
-          "amount": 5000,
-          "amount_received": 5000
+      'data': {
+        'object': {
+          'id': 'pi_00000000000000',
+          'amount': 5000,
+          'amount_received': 5000
         }
       },
-      "type": 'payment_intent.succeeded'
+      'type': 'payment_intent.succeeded'
     }
   end
   let(:entry) { create(:entry, competition: competition, user: user) }
@@ -25,6 +25,7 @@ describe 'Webhooks API', type: :request do
 
   describe '#check_payment_status' do
     before do
+      allow(ENV).to receive(:fetch).with('STRIPE_ENDPOINT_SECRET', any_args).and_return('kek')
       stripe_signature = generate_stripe_signature(params.to_json)
       headers = { 'Stripe-Signature' => stripe_signature }
       post '/api/v1/check_payment_status', params: params.to_json, headers: headers
