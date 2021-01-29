@@ -1,17 +1,16 @@
 env:
   PROJECT_NAMESPACE: Pandere/melobeem
-
   ECR_PATH: ${{ secrets.AWS_REGISTRY_ID }}.dkr.ecr.us-west-2.amazonaws.com
 
 name: Deploy production
 on:
-  pull_request:
+  pull_request_target:
     types:
-      [closed]
+      - closed
 
 jobs:
-  build:
-    if: github.event.pull_request.merged == 'true'
+  on_merged:
+    if: github.event.pull_request.merged_by != ''
     runs-on: ubuntu-latest
     steps:
       - name: Clone Repositroy
