@@ -2,7 +2,7 @@ env:
   PROJECT_NAMESPACE: melobeem
   ECR_PATH: ${{ secrets.AWS_REGISTRY_ID }}.dkr.ecr.us-east-1.amazonaws.com
 
-name: Auto deploy production
+name: Deploy production
 on:
   workflow_dispatch:
   push:
