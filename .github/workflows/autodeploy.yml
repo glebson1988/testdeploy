@@ -4,12 +4,18 @@ env:
 
 name: Auto deploy production
 on:
-  pull_request:
-    types: [closed]
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Please, type anything you want...'
+        required: true
+        default: 'Mona the Octocat'
+  push:
+    branches:
+      - master
 
 jobs:
   autodeploy:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Clone Repositroy
