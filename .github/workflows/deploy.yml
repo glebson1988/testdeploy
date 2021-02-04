@@ -5,17 +5,12 @@ env:
 name: Auto deploy production
 on:
   workflow_dispatch:
-    inputs:
-      name:
-        description: 'Please, type anything you want...'
-        required: true
-        default: 'Mona the Octocat'
   push:
     branches:
       - main
 
 jobs:
-  autodeploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Repositroy
