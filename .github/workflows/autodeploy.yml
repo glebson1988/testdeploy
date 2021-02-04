@@ -12,7 +12,7 @@ on:
         default: 'Mona the Octocat'
   push:
     branches:
-      - master
+      - main
 
 jobs:
   autodeploy:
