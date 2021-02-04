@@ -35,4 +35,3 @@ jobs:
           host: ${{ secrets.PROD_HOST }}
           username: ${{ secrets.EC2_USER }}
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-#just for diffs
